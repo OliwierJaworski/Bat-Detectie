@@ -1,6 +1,6 @@
-# S2 Mini & PowerBoost 500 Charger
+# S2 Mini & PowerBoost 500 Charger & SHT30
 
-Dit project combineert de **S2 Mini** microcontroller met de **Adafruit PowerBoost 500 Charger** voor een compacte, draagbare oplossing die zowel voeding als opladen ondersteunt.
+Dit project combineert de **S2 Mini** microcontroller met de **Adafruit PowerBoost 500 Charger** en de **SHT30 temperatuur- en vochtigheidssensor** voor een compacte, draagbare oplossing die zowel voeding, opladen als omgevingsmeting ondersteunt.
 
 ## Componenten
 
@@ -15,12 +15,22 @@ Dit project combineert de **S2 Mini** microcontroller met de **Adafruit PowerBoo
   - Micro-USB aansluiting voor opladen
   - Automatische overschakeling tussen USB- en batterijvoeding
 
+- **SHT30**
+  - Temperatuur- en luchtvochtigheidssensor
+  - Meetbereik:
+    - Temperatuur: -40 tot +125 °C (±0.2 °C nauwkeurigheid)
+    - Vochtigheid: 0–100 %RH (±2 %RH nauwkeurigheid)
+  - Communicatie via I²C
+  - Lage stroomconsumptie, geschikt voor draagbare toepassingen
+
 ## Functionaliteit
 
 - Voeding van de **S2 Mini** via een LiPo- of Li-ion batterij.
 - Opladen van de batterij via micro-USB.
 - 5V output van de PowerBoost voedt direct de S2 Mini.
-- Ideaal voor draagbare IoT-projecten.
+- Metingen van temperatuur en luchtvochtigheid via de SHT30.
+- Data kan via Wi-Fi worden doorgestuurd of lokaal verwerkt.
+- Ideaal voor draagbare IoT-projecten en omgevingsmonitoring.
 
 ## Aansluitingen
 
@@ -31,24 +41,34 @@ Dit project combineert de **S2 Mini** microcontroller met de **Adafruit PowerBoo
    - Sluit de **5V-uitgang** van de PowerBoost aan op de **5V/VBUS pin** van de S2 Mini.
    - Sluit **GND** van beide borden aan.
 
-3. **Opladen**
+3. **SHT30 → S2 Mini**
+   - **VCC** → 3.3V pin van de S2 Mini  
+   - **GND** → GND van de S2 Mini  
+   - **SDA** → GPIO 8 (SDA)  
+   - **SCL** → GPIO 9 (SCL)  
+   *(controleer de pinout van je S2 Mini, sommige boards gebruiken andere standaard I²C-pinnen)*
+
+4. **Opladen**
    - Gebruik een micro-USB kabel op de PowerBoost om de batterij op te laden.
    - Het systeem kan tijdens het opladen blijven functioneren.
 
 ## Let op
 
 - Zorg dat de aangesloten batterij correct gepolariseerd is (rode draad = +, zwarte draad = -).
-- De PowerBoost levert max. 500mA; houd rekening met stroomverbruik van de S2 Mini en randapparatuur.
+- De PowerBoost levert max. 500mA; houd rekening met stroomverbruik van de S2 Mini, SHT30 en eventuele extra randapparatuur.
+- De SHT30 werkt op 3.3V; sluit hem niet aan op 5V.
 - Gebruik een geschikte LiPo- of Li-ion batterij (bij voorkeur ≥ 500mAh).
 
 ## Toepassingen
 
 - Draagbare IoT-projecten
 - Sensoren en datalogging
+- Omgevingsmonitoring (temperatuur en luchtvochtigheid)
 - Kleine robotica toepassingen
 - Wearables
 
 ## Referenties
 
 - [S2 Mini documentatie](https://www.wemos.cc/en/latest/s2/s2_mini.html)  
-- [Adafruit PowerBoost 500 Charger](https://learn.adafruit.com/adafruit-powerboost-500-charger)
+- [Adafruit PowerBoost 500 Charger](https://learn.adafruit.com/adafruit-powerboost-500-charger)  
+- [SHT30 Datasheet (Sensirion)](https://sensirion.com/products/catalog/SHT30/)
