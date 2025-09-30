@@ -1,4 +1,5 @@
 # Onderzoeksproject: Vleermuizen en Spouwmuren
+<img width="2480" height="1642" alt="image" src="https://github.com/user-attachments/assets/67e67353-f503-4871-95e1-b014d2f404eb" />
 
 ## Introductie
 Dit project onderzoekt hoe vleermuizen spouwmuren gebruiken als leef- en verplaatsingsruimte.  
