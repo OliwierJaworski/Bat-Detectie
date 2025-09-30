@@ -46,5 +46,5 @@ Om vleermuizen effectief te beschermen en hun gedrag te begrijpen, is het essent
 - PCB voor compactere modules.
 - Cloud-integratie (Grafana/InfluxDB) voor analyse.
 
-9. Conclusie
-Met deze module kunnen duurzame en nauwkeurige omgevingsmetingen worden uitgevoerd in spouwmuren, wat ecologisch onderzoek en diervriendelijke renovaties ondersteunt.
+## 9. Conclusie
+- Met deze module kunnen duurzame en nauwkeurige omgevingsmetingen worden uitgevoerd in spouwmuren, wat ecologisch onderzoek en diervriendelijke renovaties ondersteunt.
