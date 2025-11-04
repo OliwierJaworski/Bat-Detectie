@@ -1,0 +1,3 @@
+dependencies:
+  zorxx/multipart-parser:
+    version: 1.0.1
