@@ -33,7 +33,7 @@ Dit project combineert de **S2 Mini** microcontroller met de **Adafruit PowerBoo
 - Ideaal voor draagbare IoT-projecten en omgevingsmonitoring.
 
 ## Aansluitingen
-<img width="2480" height="1642" alt="image" src="https://github.com/BjarniHeselmans/Bat-Detectie/blob/main/Docs/Attachments/Volledige_Opstelling.png" />
+<img width="2480" height="1642" alt="image" src="https://github.com/OliwierJaworski/Bat-Detectie/blob/main/Docs/Attachments/Volledige_Opstelling.png" />
 1. **Batterij → PowerBoost**
    - Verbind een LiPo/Li-ion batterij met de JST-connector van de PowerBoost.
 
