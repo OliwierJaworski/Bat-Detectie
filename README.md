@@ -1,6 +1,6 @@
 # Onderzoeksproject: Vleermuizen en Spouwmuren
 
-<img width="2480" height="1642" alt="image" src="[ProjectPicture](https://github.com/BjarniHeselmans/Bat-Detectie/blob/main/Docs/Attachments/ProjectPicture.png)" />
+<img width="2480" height="1642" alt="image" src="https://github.com/BjarniHeselmans/Bat-Detectie/blob/main/Docs/Attachments/ProjectPicture.png" />
 
 Dit project beschrijft een embedded sensormodule voor het monitoren van
 vleermuisactiviteit en omgevingscondities in spouwmuren, opgebouwd rond een
