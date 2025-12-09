@@ -1,0 +1,41 @@
+esphome:
+  name: nvsensor24
+  friendly_name: nvsensor24
+
+esp32:
+  board: lolin_s2_mini
+  framework:
+    type: arduino
+
+logger:
+
+api:
+  password: "1"
+
+ota:
+  - platform: esphome
+    password: "1"
+
+wifi:
+  ssid: batSenseWifi
+  password: batSenseWifi123-_-
+
+captive_portal:
+
+i2c:
+  sda: 33
+  scl: 35
+  scan: true
+
+sensor:
+  - platform: sht3xd
+    temperature:
+      name: "SHT3x Temperature"
+    humidity:
+      name: "SHT3x Humidity"
+    address: 0x44
+    update_interval: 10s  
+
+deep_sleep:
+  run_duration: 30s
+  sleep_duration: 10s
