@@ -22,18 +22,20 @@ bouwkundige toepassingen te verzamelen.
 
 Het doel is om een compacte, draagbare hardwaremodule te ontwikkelen die
 temperatuur en luchtvochtigheid in spouwmuren betrouwbaar meet en de gegevens
-draadloos doorstuurt naar een overkoepelend systeem.
+draadloos doorstuurt naar een overkoepelend systeem.  
 
 De module moet:
 - autonoom op batterij kunnen werken;
 - reproduceerbaar zijn op basis van de documentatie;
-- via de ESPHome-configuratie aantoonbaar meetdata leveren die in een hoger
-  niveau platform (zoals Home Assistant of een dataloggingomgeving) kan
-  worden gebruikt.
+- via ESPHome alle sensoren koppelen en de meetdata via Wi‑Fi doorsturen;
+- meetdata beschikbaar maken in een hoger niveau platform
+  (zoals Home Assistant of een dataloggingomgeving).
 
 ---
 
 ## Materialen en Methoden
+
+### Hardware
 
 De hardware bestaat uit:
 - S2 Mini (ESP32-S2 met Wi‑Fi);
@@ -42,13 +44,23 @@ De hardware bestaat uit:
 
 De bekabeling en opstelling zijn beschreven in `Docs/Research.md`.
 
+### Firmware en datadoorsturing
+
 De firmware wordt gerealiseerd met **ESPHome** op basis van:
 - `Scripts/HTSensor.yaml`
 
-Hiermee:
-- leest de ESP32-S2 de SHT3X via I²C uit;
-- wordt deep-sleep gebruikt om batterij te sparen;
-- worden gemeten waarden periodiek via Wi‑Fi verstuurd.
+ESPHome wordt gebruikt als centrale laag om alle sensoren aan de ESP32-S2 te
+koppelen en de ruwe meetwaarden te vertalen naar entiteiten die via Wi‑Fi
+beschikbaar zijn op het netwerk.  
+In de ESPHome-configuratie worden de sensoren (zoals de SHT3X) gedefinieerd,
+worden meetintervallen ingesteld, wordt deep‑sleep geconfigureerd voor
+energiebesparing en wordt gespecificeerd naar welke host (bijvoorbeeld
+Home Assistant) de data wordt doorgestuurd.  
+
+Samengevat:
+- ESPHome koppelt elke sensor logisch aan de microcontroller;
+- de ESP32-S2 stuurt de meetdata via Wi‑Fi naar het netwerk;
+- een extern systeem kan de data vervolgens loggen, verwerken en visualiseren.
 
 ---
 
@@ -67,7 +79,8 @@ HTSensor.yaml
 
 
 - `Docs/` bevat alle documentatie rond hardware, tests en opbouw.  
-- `Scripts/` bevat de ESPHome-configuratiebestanden.
+- `Scripts/` bevat de ESPHome-configuratiebestanden waarmee de sensoren worden
+  gekoppeld en de datadoorsturing via Wi‑Fi wordt geregeld.
 
 ---
 
@@ -79,39 +92,44 @@ HTSensor.yaml
    - PowerBoost  
    - SHT30/SHT3X sensor
 
-2. **Firmware flashen**  
-   Gebruik ESPHome met het YAML-bestand in `Scripts/`:
-   esphome run HTSensor.yaml
+2. **ESPHome configureren en firmware flashen**  
+   - Installeer ESPHome op je systeem.  
+   - Plaats `HTSensor.yaml` in je ESPHome-projectmap.  
+   - Flash de firmware naar de S2 Mini:
+     ```
+     esphome run HTSensor.yaml
+     ```
+   In deze configuratie worden alle sensoren gekoppeld en wordt Wi‑Fi ingesteld
+   zodat de module verbinding maakt met je netwerk.
 
 3. **Testen en logs bekijken**  
-   esphome logs HTSensor.yaml
 
-Bekijk hiermee in realtime de sensorwaarden en controleer de communicatie.
+esphome logs HTSensor.yaml
+
+Hiermee kun je in realtime de sensorwaarden bekijken en controleren:
+- of de SHT30/SHT3X correct uitgelezen wordt;
+- of de Wi‑Fi-verbinding tot stand komt;
+- of de entiteiten zichtbaar zijn in het gekoppelde systeem
+  (bijvoorbeeld Home Assistant).
 
 ---
 
 ## Resultaten
 
 Met de opgeleverde module kan in spouwmuren een stabiele meting van temperatuur
-en luchtvochtigheid uitgevoerd worden, waarbij de sensordata via ESPHome
-beschikbaar komt als entiteiten die door een extern systeem gelogd en
-gevisualiseerd kunnen worden.
-
+en luchtvochtigheid uitgevoerd worden, waarbij ESPHome alle sensoren beheert en
+de data via Wi‑Fi beschikbaar maakt als entiteiten in het netwerk.  
 De combinatie van documentatie in `Docs/` en configuratie in `Scripts/`
-maakt het mogelijk om:
-- de opstelling te reproduceren;
-- het gedrag van de module te testen;
-- de meetresultaten te koppelen aan het bredere vleermuisonderzoek.
+maakt het mogelijk om de opstelling te reproduceren, het gedrag van de module
+te testen en de meetresultaten te koppelen aan het bredere vleermuisonderzoek.
 
 ---
 
 ## Conclusie
 
-De combinatie van S2 Mini, PowerBoost en SHT30 levert een praktische embedded
-oplossing voor omgevingsmonitoring in spouwmuren, met een duidelijke scheiding
-tussen hardwaredocumentatie en firmwareconfiguratie in de repository.
-
-Tijdens het project komen typische embedded-uitdagingen zoals energiebeheer,
-omgevingsinvloeden (vocht) en draadloze connectiviteit expliciet in beeld.
-Dit biedt waardevolle leerervaringen voor het ontwerpen van robuuste
-IoT-sensorknopen in realistische toepassingen.
+De combinatie van S2 Mini, PowerBoost, SHT30 en ESPHome levert een praktische
+embedded oplossing voor omgevingsmonitoring in spouwmuren, met een duidelijke
+scheiding tussen hardware, firmwareconfiguratie en documentatie.  
+ESPHome vereenvoudigt het koppelen van sensoren en de Wi‑Fi‑datadoorsturing,
+waardoor de focus kan liggen op metingen, analyse en de ecologische en
+bouwkundige relevantie van het project.
