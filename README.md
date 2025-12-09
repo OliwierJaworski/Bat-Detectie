@@ -130,3 +130,4 @@ text
 
 - `Docs/` bevat alle documentatie rond hardware, tests en opbouw.
 - `Scripts/` bevat de ESPHome-configuratie waarmee de sensoren gekoppeld en via Wi‑Fi doorgestuurd worden.
+- `firmware/` bevat dummy sensor logica.
