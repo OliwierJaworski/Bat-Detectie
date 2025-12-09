@@ -51,6 +51,8 @@ Hieronder volgt een overzicht van de bestanden en hun inhoud.
 - een step by step guide om de error te kunnen oplossen
 - vervolgt met de mannier om de esp te flashen
 
+---
+
 ### 6. [HWInstallationGuide.md](./HWInstallationGuide.md)
 **Onderwerp:** Hardware assembly guide for the casing.  
 **Inhoud:**  
