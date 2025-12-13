@@ -80,7 +80,7 @@ De oorspronkelijke bekabeling overschreed deze lengte ruim, wat kon leiden tot:
    [10:30:46.370][E][i2c.arduino:107]: Unknown error at address 0x09
    [10:30:46.370][E][i2c.arduino:107]: Unknown error at address 0x0A
    [10:30:46.370][E][i2c.arduino:107]: Unknown error at address 0x0B
-   
+
    [10:30:46.695][E][sht3xd:060]:   Communication with SHT3xD failed!
    [10:30:46.698][E][component:154]:   sht3xd.sensor is marked FAILED: unspecified
 
@@ -96,8 +96,7 @@ Onderstaande afbeelding toont een voorbeeld van een sensor met de aangepaste kab
 
 ## Observaties
 - De kwaliteit van de verbindingen is visueel gecontroleerd en goedgekeurd.
-- Daarlangs is elke kabel individueel gecontroleerd op verbinding met het systeem door gebruik van een geflahste sensor-module met aangepaste configuratie. waarin de sleepmode uitgezet werd en de sensor om de 10 seconden data verstuurde naar  de
-
+- Naast de visuele inspectie van de verbindingen werd ook een softwarematige controle uitgevoerd via ESPHome-logging en Home Assistant om de correcte werking van de sensoren te bevestigen.
 ## Resultaat
 - Alle sensoren zijn voorzien van **nieuwe, verkorte kabels** van 1 meter lengte.  
 - De verbindingen zijn **volgens datasheet** gecontroleerd en bevestigd.  
